@@ -242,7 +242,7 @@ auto collectSlices(Poly const &plineA, Poly const &plineB,
   sliceAtIntersects(plineA, combineInfo, false, plineAPointOnSlicePred, slicesRemaining);
 
   // slice plineB
-  result.startOfPlineBCoincidentSlicesIdx = slicesRemaining.size();
+  result.startOfPlineBSlicesIdx = slicesRemaining.size();
   sliceAtIntersects(plineB, combineInfo, true, plineBPointOnSlicePred, slicesRemaining);
 
   // add plineA coincident slices
@@ -251,13 +251,13 @@ auto collectSlices(Poly const &plineA, Poly const &plineB,
                          combineInfo.coincidentSlices.end());
 
   // add plineB coincident slices
-  std::size_t startOfPlineBCoincidentSlices = slicesRemaining.size();
+  result.startOfPlineBCoincidentSlicesIdx = slicesRemaining.size();
   slicesRemaining.insert(slicesRemaining.end(), combineInfo.coincidentSlices.begin(),
                          combineInfo.coincidentSlices.end());
 
   // invert direction of plineB coincident slices to match original orientation
   std::size_t coincidentSliceIdx = 0;
-  for (std::size_t i = startOfPlineBCoincidentSlices; i < slicesRemaining.size(); ++i) {
+  for (std::size_t i = result.startOfPlineBCoincidentSlicesIdx; i < slicesRemaining.size(); ++i) {
     if (combineInfo.coincidentIsOpposingDirection[coincidentSliceIdx]) {
       invertDirection(slicesRemaining[i]);
     }
