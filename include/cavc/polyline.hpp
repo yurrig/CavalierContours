@@ -100,7 +100,8 @@ template <typename Poly, typename Real = typename Poly::Real> AABB<Real> getExte
             -std::numeric_limits<Real>::infinity(), -std::numeric_limits<Real>::infinity()};
   }
 
-  AABB<Real> result{pline[0].x(), pline[0].y(), pline[0].x(), pline[0].y()};
+  auto& lastVertex = pline[pline.size() - 1];
+  AABB<Real> result{lastVertex.x(), lastVertex.y(), lastVertex.x(), lastVertex.y()};
 
   auto visitor = [&](std::size_t i, std::size_t j) {
     PlineVertex<Real> const &v1 = pline[i];
