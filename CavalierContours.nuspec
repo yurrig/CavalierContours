@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>CavalierContours</id>
+        <authors>jbuckmccready@gmail.com</authors>
+        <version>0.0.1</version>
+        <description>C++14 header only library (with a C API available) for processing 2D polylines containing both straight line and constant radius arc segments.</description>
+        <tags>native nativepackage C++ CavalierContours</tags>
+    </metadata>
+    <files>
+        <file src="include\**\*"             target="build\native\include" />
+        <file src="CavalierContours.props"   target="build\native"         />
+    </files>
+</package>
