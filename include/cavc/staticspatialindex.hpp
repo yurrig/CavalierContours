@@ -41,7 +41,7 @@ public:
   using indices_t = typename Traits::indices_t;
 
   template <class T>
-  using alloc = Traits::template alloc<T>;
+  using alloc = typename Traits::template alloc<T>;
 
   StaticSpatialIndex(std::size_t numItems, const alloc<size_t>& ind_alloc = alloc<size_t>(), const alloc<Real>& box_alloc = alloc<Real>())
      : m_ind_alloc(const_cast<alloc<size_t>&>(ind_alloc)), m_box_alloc(const_cast<alloc<Real>&>(box_alloc))
